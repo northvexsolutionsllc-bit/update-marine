@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import { Link, useLocation } from "react-router-dom";
 import ScrollProgress from "@/components/base/ScrollProgress";
+import { Waves, ArrowUpRight } from "lucide-react";
 import { navLinks, siteInfo } from "@/mocks/site";
 
 export default function SiteHeader() {
@@ -49,13 +50,14 @@ export default function SiteHeader() {
       <div className="mx-auto flex w-full max-w-container items-center justify-between gap-6 px-4 md:px-6">
         <Link to="/" className="group flex items-center gap-3.5" aria-label={siteInfo.name}>
           <span
-            className={`flex h-10 w-10 items-center justify-center border transition-colors ${
+            className={`relative flex h-11 w-11 items-center justify-center overflow-hidden rounded-full border transition-all duration-500 group-hover:rotate-[-8deg] ${
               solid
-                ? "border-accent-500/50 bg-primary-950 text-accent-300"
-                : "border-accent-300/50 bg-primary-950/50 text-accent-200 backdrop-blur-sm"
+                ? "border-accent-500/60 bg-primary-950 text-accent-300 shadow-[0_5px_18px_rgba(8,47,42,.15)]"
+                : "border-accent-300/60 bg-primary-950/65 text-accent-200 backdrop-blur-sm"
             }`}
           >
-            <span className="font-heading text-lg leading-none">M</span>
+            <span className="absolute inset-1 rounded-full border border-current/25" />
+            <Waves size={20} strokeWidth={1.6} />
           </span>
           <span className="leading-none">
             <span
@@ -70,7 +72,7 @@ export default function SiteHeader() {
                 solid ? "text-secondary-600" : "text-accent-200/85"
               }`}
             >
-              Pool Renovations
+              Pool Renovations · LLC
             </span>
           </span>
         </Link>
@@ -117,7 +119,7 @@ export default function SiteHeader() {
             to="/contact"
             className="m-press m-cta whitespace-nowrap bg-primary-950 px-6 py-3 text-background-50 hover:bg-primary-900"
           >
-            Request Estimate
+            Request Estimate <ArrowUpRight className="ml-2 inline" size={14} />
           </Link>
         </div>
 
